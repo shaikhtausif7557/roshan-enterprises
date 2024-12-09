@@ -5,12 +5,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import projectRoutes from './routes/projects.js';
 
-dotenv.config();
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import projectRoutes from './routes/projects.js';
 
 dotenv.config();
 
