@@ -12,7 +12,11 @@ import { useState } from 'react';
 function App() {
   const [isActive, setIsActive] = useState(false); // Active state
 
-
+  useEffect(() => {
+    fetch("https://roshan-enterprises.onrender.com")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  },[]);
   return (
     <div id="App">
         <div id="Nav">
