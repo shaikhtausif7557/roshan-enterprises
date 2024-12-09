@@ -1,5 +1,5 @@
-// server.js
 import express from 'express';
+import path from 'path';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -19,8 +19,16 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
 
-// Routes
+// Serve static files for the frontend
+app.use(express.static(path.join(__dirname, '../../frontend/build')));
+
+// Set up your API routes
 app.use('/api/projects', projectRoutes);
+
+// Handle frontend routing for SPA
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
+});
 
 // Start the server
 app.listen(PORT, () => {
