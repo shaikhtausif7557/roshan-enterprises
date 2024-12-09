@@ -9,6 +9,11 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import { useState } from 'react';
 
+const corsOptions = {
+  origin: "https://roshan-enterprisess.onrender.com", // frontend URI (ReactJS)
+}
+app.use(express.json());
+app.use(cors(corsOptions));
 function App() {
   const [isActive, setIsActive] = useState(false); // Active state
 
